@@ -5,19 +5,6 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [task, setTask] = useState("");
 
-  // Load todos from localStorage when the component mounts
-  useEffect(() => {
-    const localData = localStorage.getItem("todos");
-    if (localData) {
-      setTodos(JSON.parse(localData));
-    }
-  }, []);
-
-  // Save todos to localStorage whenever the todos state changes
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!task) return;
