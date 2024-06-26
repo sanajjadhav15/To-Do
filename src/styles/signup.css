@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.signup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-color: #EDEEF7;
+}
+
+h2{
+    color: #574AE2;
+}
+
+.form{
+    width: 400px;
+    padding: 38px;
+}
+
+.input-email{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #7868E6;
+    border-radius: 4px;
+    outline: none;
+    color: #574AE2;
+}
+
+.input-pass{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #7868E6;
+    border-radius: 4px;
+    outline: none;
+    color: #574AE2;
+}
+
+.btn-signup{
+    width: 100%;
+    padding: 10px;
+    background-color: #7868E6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-signup:hover{
+    background-color: #574AE2;
+}
+
+hr{
+    margin: 12px 0;
+    border: 1px solid #B8B5FF;
+    width: 100%;
+}
+
+p{
+    color: #574AE2;
+    text-align: center;
+}
+
+.btn-google{
+    width: 100%;
+    padding: 8px;
+    background-color: white;
+    color: #574AE2;
+    border: 1px solid #7868E6;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-google:hover{
+    transform: scale(1.01);
+}
+
+img{
+    width: 20px;
+    margin-right: 10px;
+}
+
+.signin{
+    color: #7868E6;
+    text-decoration: none;
+    margin-top: 14px;
+    text-align: center;
+}
