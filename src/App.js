@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Signup from "./components/Signup";
 import Signin from "./components/Signin";
 import Todo from "./components/Todo";
@@ -19,10 +19,6 @@ function App() {
     return unsubscribe;
   }, []);
 
-  // const handleSignOut = () => {
-  //   signOut(auth);
-  // };
-
   return (
     <Router>
       <div className="container">
@@ -32,18 +28,18 @@ function App() {
         </div>
 
         <Routes>
-          <Route path="/" element={<Signup />} />
+          <Route path="/" element={user? <Todo /> : <Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/todo" element={<Todo />} />
         </Routes>
-
-        {/* {user && (
-          <button onClick={handleSignOut} className="signout">
-            Sign Out
-          </button>
-        )} */}
       </div>
+      <footer>
+        <div className="footer">
+          {/* <p>© 2024</p> */}
+          <p>Designed and developed with ❤️ by Sanaj</p>
+        </div>
+      </footer>
     </Router>
   );
 }
