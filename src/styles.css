@@ -24,10 +24,22 @@
     pointer-events: none; 
 }
 
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 .heading {
     text-align: center;
     color: #574AE2;
-    margin: 0 0 20px;
+    margin: 0 12px 0 0;
+}
+
+.logo{
+    width: 37px;
+    height: auto;
 }
 
 .nav {

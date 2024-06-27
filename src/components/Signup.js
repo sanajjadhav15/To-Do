@@ -6,18 +6,22 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebase";
-import "../styles/signup.css";
 import googleIcon from "./google.png";
+import "../styles/sign.css";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSignupWithEmail = async (e) => {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
+      navigate("/todo");
+      
     } catch (error) {
       setError(error.message);
     }
@@ -27,6 +31,7 @@ const Signup = () => {
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(auth, provider);
+      navigate("/todo");
     } catch (error) {
       setError(error.message);
     }
@@ -62,11 +67,9 @@ const Signup = () => {
         </button>
         {error && <p className="error">{error}</p>}
         <p className="signin">
-        Already have an account? <Link to="/signin">Sign In</Link>
-      </p>
+          Already have an account? <Link to="/signin">Sign In</Link>
+        </p>
       </form>
-
-      
     </div>
   );
 };

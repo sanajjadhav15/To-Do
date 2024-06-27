@@ -7,6 +7,7 @@ import { auth } from "./firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import "./styles.css";
 import bg from "./components/bg-image.jpg";
+import img from "./image.png";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -29,19 +30,17 @@ function App() {
     <Router>
       <div className="container">
         <img src={bg} alt="background" className="bg" />
-        <h1 className="heading">My To Do</h1>
+        <div className="header">
+          <h1 className="heading">My To Do</h1>
+          {/* <img src={img} alt="logo" className="logo" /> */}
+        </div>
+
         <Routes>
-          {user ? (
-            <Route
-              path="/"
-              element={<Todo user={user} handleSignOut={handleSignOut} />}
-            />
-          ) : (
-            <>
-              <Route path="/" element={<Signup />} />
-              <Route path="/signin" element={<Signin />} />
-            </>
-          )}
+          <Route path="/" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/todo" element={<Todo user={user} handleSignOut={handleSignOut} />} />
+
         </Routes>
       </div>
     </Router>
