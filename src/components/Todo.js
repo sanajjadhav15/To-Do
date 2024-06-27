@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { db, auth } from "../firebase";
+import { auth, db } from "../firebase";
 import {
   collection,
   addDoc,
@@ -12,6 +12,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import "../styles/todo.css";
+import { signOut } from "firebase/auth";
 
 function Todo() {
   const [todos, setTodos] = useState([]);
@@ -69,6 +70,10 @@ function Todo() {
     );
   };
 
+  const handleSignOut = () => {
+    signOut(auth);
+  };
+
   return (
     <div className="container-td">
       <form onSubmit={handleSubmit} className="form-td">
@@ -107,6 +112,13 @@ function Todo() {
           </li>
         ))}
       </ul>
+      {user && (
+        <div className="signout-td">
+          <button onClick={handleSignOut} className="signout-btn">
+            Sign Out
+          </button>
+        </div>
+        )}
     </div>
   );
 }

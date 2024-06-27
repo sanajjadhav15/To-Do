@@ -19,9 +19,9 @@ function App() {
     return unsubscribe;
   }, []);
 
-  const handleSignOut = () => {
-    signOut(auth);
-  };
+  // const handleSignOut = () => {
+  //   signOut(auth);
+  // };
 
   return (
     <Router>
@@ -38,11 +38,11 @@ function App() {
           <Route path="/todo" element={<Todo />} />
         </Routes>
 
-        {user && (
+        {/* {user && (
           <button onClick={handleSignOut} className="signout">
             Sign Out
           </button>
-        )}
+        )} */}
       </div>
     </Router>
   );
