@@ -13,13 +13,10 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(null);
-      }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
     });
+    return unsubscribe;
   }, []);
 
   const handleSignOut = () => {
@@ -32,16 +29,20 @@ function App() {
         <img src={bg} alt="background" className="bg" />
         <div className="header">
           <h1 className="heading">My To Do</h1>
-          {/* <img src={img} alt="logo" className="logo" /> */}
         </div>
 
         <Routes>
           <Route path="/" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/todo" element={<Todo user={user} handleSignOut={handleSignOut} />} />
-
+          <Route path="/todo" element={<Todo />} />
         </Routes>
+
+        {user && (
+          <button onClick={handleSignOut} className="signout">
+            Sign Out
+          </button>
+        )}
       </div>
     </Router>
   );

@@ -80,3 +80,22 @@
 .nav-link:hover {
     text-decoration: underline;
 }
+
+.signout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 8px 13px;
+    border: none;
+    border-radius: 4px;
+    background-color: #7868E6;
+    color: white;
+    cursor: pointer;
+}
+
+.signout:hover {
+    background-color: #574AE2;
+    transform: scale(1.02);
+    transition: all 0.3s;
+}
