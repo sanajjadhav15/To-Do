@@ -26,16 +26,17 @@ function Signin() {
     }
   };
 
-  const handleSigninWithGoogle = async () => {
-    const provider = new GoogleAuthProvider();
-    try {
-      await signInWithPopup(auth, provider);
-      navigate("/todo");
-    } catch (error) {
-      setError(error.message);
-    }
+  const handleSigninWithGoogle = () => {
+    signInWithPopup(auth, new GoogleAuthProvider())
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        navigate("/todo");
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   };
-
+  
   return (
     <div className="signup">
       <form onSubmit={handleSigninWithEmail} className="form">
