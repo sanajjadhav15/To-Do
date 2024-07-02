@@ -5,7 +5,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth, googleProvider } from "../firebase";
 import googleIcon from "./google.png";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -27,16 +27,17 @@ function Signin() {
   };
 
   const handleSigninWithGoogle = () => {
-    signInWithPopup(auth, new GoogleAuthProvider())
+    signInWithPopup(auth, googleProvider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
         navigate("/todo");
       })
       .catch((error) => {
         setError(error.message);
       });
   };
-  
+
   return (
     <div className="signup">
       <form onSubmit={handleSigninWithEmail} className="form">

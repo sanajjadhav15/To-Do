@@ -5,7 +5,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth, googleProvider } from "../firebase";
 import googleIcon from "./google.png";
 import "../styles/sign.css";
 import { useNavigate } from "react-router-dom";
@@ -28,9 +28,10 @@ const Signup = () => {
   };
 
   const handleSignupWithGoogle = () => {
-    signInWithPopup(auth, new GoogleAuthProvider())
+    signInWithPopup(auth, googleProvider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
         navigate("/todo");
       })
       .catch((error) => {
